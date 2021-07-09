@@ -9,7 +9,7 @@ It can be used as inputs to the Type56 Multizone Building to include crops as in
 -----------------------------------
 DESCRIPTION OF THE LETTUCES-STEADY-STATE MODEL
 -----------------------------------
-- It is a steady-state model since the size of crops do not vary with the tim; thus the Leaf Area Index (LAI) is set as a simulation parameter in this version of the crop model. 
+- It is a steady-state model since the size of crops do not vary with the tim; thus the Leaf Area Index (LAI) and the cultivation is set as a simulation parameter in this version of the crop model. 
 - It models lettuces in a controlled environnement and the algorithm was validated (Graamans et al., 2017).
 
 -----------------------------------

@@ -9,8 +9,10 @@ It can be used as inputs to the Type56 Multizone Building to include crops as in
 -----------------------------------
 DESCRIPTION OF THE CROP (LETTUCE) STEADY-STATE MODEL
 -----------------------------------
-- It is a steady-state model since the size of crops do not vary with the tim; thus the Leaf Area Index (LAI) and the cultivation is set as a simulation parameter in this version of the crop model. 
-- It models lettuces in a controlled environnement and the algorithm was validated (Graamans et al., 2017).
+- It models lettuces growing inside a controlled environnement in a hydroponic production system according to a validated algorithm (Graamans et al., 2017).
+- It is a steady-state model since the size of crops do not vary with the time; thus the Leaf Area Index (LAI) and the cultivation is set as a simulation parameter in this version of the crop model.
+- This version of crops model can only be used in a space where LED lamps are used to grow crops. 
+
 
 -----------------------------------
 CITATION

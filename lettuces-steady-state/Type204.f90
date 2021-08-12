@@ -184,14 +184,15 @@ Double precision Res
       If(getIsReReadParameters()) Then
         !ReRead in the Values of the Parameters from the Input File
         !Sample Code: PAR1 = getParameterValue(1)
-          rho_a = getParameterValue(1) !Air density [kg/m^2]
-          c_p = getParameterValue(2) !Air specific heat capacity [kJ/kgK]
-          lambda = getParameterValue(3) !Latent heat vapor of water [kJ/kg]
-          gamma = getParameterValue(4) !Psychometric constant [Pa/K]
-          rho_v = getParameterValue(5) !Lettuce relfectivity [-]
-          LED_eff = getParameterValue(6) !LED efficiency [-]
-          CAC = getParameterValue(7) !Coverage of the floor of the cultivated area [-]
-          Afv = getParameterValue(9) !Cultivated fraction area of floor [-]
+          LAI = getParameterValue(1) !Leaf Area Index [-]
+          Afv = getParameterValue(2) !Cultivated fraction area of floor [-]
+          rho_a = getParameterValue(3) !Air density [kg/m^2]
+          c_p = getParameterValue(4) !Air specific heat capacity [kJ/kgK]
+          lambda = getParameterValue(5) !Latent heat vapor of water [kJ/kg]
+          gamma = getParameterValue(6) !Psychometric constant [Pa/K]
+          rho_v = getParameterValue(7) !Lettuce relfectivity [-]
+          LED_eff = getParameterValue(8) !LED efficiency [-]
+          CAC = getParameterValue(9) !Coverage of the floor of the cultivated area [-]
       EndIf
 !-----------------------------------------------------------------------------------------------------------------------
 

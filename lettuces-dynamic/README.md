@@ -22,4 +22,4 @@ CITATION
 -----------------------------------
 Please cite when using the model :
 
-<i> Talbot, M.H. and D. Monfet. 2021. Estimated energy demand and sensible heat ratio of a controlled-environment agriculture space for a growth cycle. ASHRAE Transactions 127(2):211-219. [In press] </i> 
+<i> Talbot, M.H. and D. Monfet. 2021. Estimated energy demand and sensible heat ratio of a controlled-environment agriculture space for a growth cycle. ASHRAE Transactions 127(2):211-219. </i> 

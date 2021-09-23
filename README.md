@@ -12,5 +12,5 @@ It can be used as inputs to the Type56 Multizone Building to include crops as in
 SUMMARY OF THE MODELS' MAIN CHARACERISTICS :
 -----------------------------------
 
-      1- lettuces-steady-state : lettuces, steady-state LAI, steady-state CAC, LED lamps only, perfectly irrigated
-      2- lettuces-dynamic : lettuces, dynamic LAI, dynamic CAC, LED lamps only, perfectly irrigated
+      1- <i>lettuces-steady-state</i> : lettuces, steady-state LAI, steady-state CAC, LED lamps only, perfectly irrigated
+      2- <i>lettuces-dynamic</i> : lettuces, dynamic LAI, dynamic CAC, LED lamps only, perfectly irrigated

@@ -1,4 +1,4 @@
-Author : Marie-Hélène Talbot & Danielle Monfet
+Authors : Marie-Hélène Talbot & Danielle Monfet
 
 ETS Montreal
 

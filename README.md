@@ -9,5 +9,6 @@ The crop models are TRNSYS components that can be use to estimate the latent hea
 It can be used as inputs to the Type56 Multizone Building to include crops as internal gains/losses in a thermal zone.
 
 Models summary of the main characteristics :
+
   1- lettuces-steady-state : lettuces, steady-state LAI, steady-state CAC, LED lamps only
   2- lettuces-dynamic : lettuces, dynamic LAI, dynamic CAC, LED lamps only

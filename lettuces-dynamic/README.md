@@ -1,4 +1,4 @@
-Author : Marie-Hélène Talbot & Danielle Monfet
+Authors : Marie-Hélène Talbot & Danielle Monfet
 ETS Montreal
 
 This project includes crop models in folders that were used in various studied that were published by members of LTSB.

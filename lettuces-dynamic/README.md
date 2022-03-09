@@ -14,7 +14,7 @@ DESCRIPTION OF THE CROP (LETTUCE) DYNAMIC MODEL
 - A text file can be used to estimate LAI(t) and CAC(t). As an example, a text file (Example_LAI_CAC.txt) is available on GitHub using a timestep of 10 minutes:
 
        * First column: LAI calculated according to Shimizu et al. (2018). 
-       * (The paremeters used : crop density of 17.6 crops/m^2 (to fit with Tei, Scaife, and Aikman (1996)) and fresh weight on the 30th day of 243 g.)
+         (Paremeters : crop density of 17.6 crops/m^2 (to fit with Tei, Scaife, and Aikman (1996)) and fresh weight on the 30th day of 243 g.)
        * Second column : CAC calculated according to Tei, Scaife, and Aikman (1996)
 
 

@@ -4,8 +4,10 @@
 
 !DEC$Attributes DLLexport :: Type204
 !-----------------------------------------------------------------------------------------------------------------------
-!Type204 developped at École de technologie supérieure (ÉTS in Montreal).
-! Written by Marie-Hélène Talbot based on Luuks Graamans article
+! Type204 developped at Ecole de technologie superieure (ETS in Montreal).
+! Written by Marie-Helene Talbot.
+! Type 204 is based on Graamans et al. (2017) work.
+!
 !-----------------------------------------------------------------------------------------------------------------------
 !Local variables declarations
 Implicit None !force explicit declaration of local variables
@@ -14,7 +16,8 @@ Implicit None !force explicit declaration of local variables
 Double precision T_a !Air temperature [degC]
 Double precision RH !Relative humidity [-]
 Double precision P_LED !Total LED Power [W]
-Double precision A_gr !Area of greenhouse floor [m^2]
+Double precision A_gr !Floor area [m^2]
+
 
 !Outputs
 Double precision q_sens !Sensible gain to air from vegetation [kJ/hr]
@@ -22,42 +25,37 @@ Double precision q_lat !Latent gain to air from vegetation [kg/hr]
 Double precision T_s !Vegetation temperature [degC]
 Double precision q_loss !Light energy that got reflected [W]
 
-
-
 !Parameters
-Double precision LAI !Leaf Area index [-]
+Double precision LAI !Leaf Area Index [m^2_leaves/m^2_cultivated area]
 Double precision Afv !Cultivated fraction [-]
 Double precision rho_a !Air density [kg/m^3]
 Double precision c_p !Air specific heat capacity [kJ/kgK]
 Double precision lambda !Latent heat vapor of water [kJ/kg]
 Double precision gamma !Psychometric constant [Pa/K]
-Double precision rho_v!Lettuce relfectivity [-]
+Double precision rho_v !Lettuce relfectivity [-]
 Double precision LED_eff !LED efficiency [-]
 Double precision CAC !Coverage of the floor of the cultivated area [-]
-
-
+Double precision T_s_final
+Double precision Res
 
 !TRNSYS-derived
 Double Precision Time,Timestep
 
 !Variables
-Double precision PPFD !nu_mol/m^2*s !Ratio de 5 provient des résultats de Gramaans
-Double precision I_light !LED power convert to visbile light [W/m^2]
-Double precision R_net !Visible light absorb by vegetation [W/m^2]
+Double precision PPFD !nu_mol/m^2*s
+Double precision I_light !LED power convert to short-wave radiation [W/m^2]
+Double precision Rnet !Short-wave radiation absorbed by vegetation [W/m^2]
 Double precision r_a !Aerodynamic stomatal resistance [s/m]
 Double precision r_s !Surface stomatal resistance [s/m]
+Double precision Xa !Air vapor concentration [g/m3]
+Double precision Xs !Vapour concentration at the canopy level [g/m3]
 Double precision e_star !Saturated vapor pressure [kPa]
 Double precision Xa_star !Saturated vapor concentration [g/m3]
 Double precision e !Air vapor pressure [kPa]
-Double precision Xa !Air vapor concentration [g/m3]
-Double precision delta !Slope of the relationship between the saturation vapour pressure and air temperature [kPa/°C]
+Double precision delta !Slope of the relationship between the saturation vapour pressure and air temperature [kPa/degC]
 Double precision epsilon !Vapour concentration
-Double precision Xs !Vapour concentration at the canopy level [g/m3]
 Double precision q_sens_watt !Sensible gain to air from vegetation [W/m^2]
 Double precision q_lat_watt !Latent gain to air from vegetation [W/m^2]
-Double precision Rnet 
-Double precision T_s_final
-Double precision Res
 
 !-----------------------------------------------------------------------------------------------------------------------
 
@@ -65,6 +63,7 @@ Double precision Res
 !Get the Global Trnsys Simulation Variables
       Time=getSimulationTime()
       Timestep=getSimulationTimeStep()
+
 !-----------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------
@@ -99,7 +98,7 @@ Double precision Res
 		Call SetNumberofDerivatives(0)         !The number of derivatives that the the model wants
 		Call SetNumberofOutputs(4)             !The number of outputs that the the model produces
 		Call SetIterationMode(1)               !An indicator for the iteration mode (default=1).  Refer to section 8.4.3.5 of the documentation for more details.
-		Call SetNumberStoredVariables(0,0)     !Only one dynamic variable (T_s)
+		Call SetNumberStoredVariables(0,0)     !Only one dynamic variable: T_s
         !The number of static variables that the model wants stored in the global storage array and the number of dynamic variables that the model wants stored in the global storage array
 		Call SetNumberofDiscreteControls(0)    !The number of discrete control functions set by this model (a value greater than zero requires the user to use Solver 1: Powell's method)
 
@@ -112,8 +111,7 @@ Double precision Res
         Call SetOutputUnits(2,'MF11') !Latent gain to air from vegetation [kg/hr]
         Call SetOutputUnits(3,'TE1') !Vegetation temperature [degC]
         Call SetOutputUnits(4,'PW1') !Light energy that got reflected [W]
-        !Call SetOutputUnits(5,'DM1') !Lead area index [-]
-        
+
 		Return
 
       EndIf
@@ -124,7 +122,7 @@ Double precision Res
       If (getIsStartTime()) Then
       !Read in the Values of the Parameters from the Input File
       !Sample Code: PAR1 = getParameterValue(1)
-          LAI = getParameterValue(1) !Leaf Area Index [-]
+          LAI = getParameterValue(1)!Leaf Area Index [m^2_leaves/m^2_cultivated area]
           Afv = getParameterValue(2) !Cultivated fraction area of floor [-]
           rho_a = getParameterValue(3) !Air density [kg/m^2]
           c_p = getParameterValue(4) !Air specific heat capacity [kJ/kgK]
@@ -135,9 +133,7 @@ Double precision Res
           CAC = getParameterValue(9) !Coverage of the floor of the cultivated area [-]
       
       !Check the Parameters for Problems (#,ErrorType,Text)
-      !Sample Code: If( PAR1 <= 0.) Call FoundBadParameter(1,'Fatal','The first parameter provided to this model is not acceptable.')
-      IF (LAI< 0.) CALL foundBadParameter(1, 'Fatal', &
-         'The LAI must be greater than 0')      
+      !Sample Code: If( PAR1 <= 0.) Call FoundBadParameter(1,'Fatal','The first parameter provided to this model is not acceptable.')  
       IF ((Afv < 0.) .or. (Afv > 10.)) CALL foundBadParameter(2, 'Fatal', &
          'The Cultivated fraction area of floor must be between 0 and 10 (1000%)')
       IF (rho_a < 0.) CALL foundBadParameter(3, 'Fatal', &
@@ -146,12 +142,10 @@ Double precision Res
       'The air specific heat capacity must greater than 0')
       IF (lambda < 0.) CALL foundBadParameter(5, 'Fatal', &
       'The latent heat vapor of water must be greater than 0')
-     IF ((rho_v < 0.) .or. ( rho_v > 1.)) CALL foundBadParameter(6, 'Fatal', &
+     IF ((rho_v < 0.) .or. ( rho_v > 1.)) CALL foundBadParameter(7, 'Fatal', &
       'The lettuce leaf light reflectivity must be between 0 and 1')
-     IF ((LED_eff < 0.) .or. (LED_eff > 1.)) CALL foundBadParameter(7, 'Fatal', &
-         'The LED efficiency must be between 0 and 1')
-     IF ((CAC < 0.) .or. (CAC > 1.)) CALL foundBadParameter(8, 'Fatal', &
-         'The coverage of the floor of the cultivated area must be between 0 and 1')   
+     IF ((LED_eff < 0.) .or. (LED_eff > 1.)) CALL foundBadParameter(8, 'Fatal', &
+         'The LED efficiency must be between 0 and 1') 
 
      IF (ErrorFound()) RETURN 
      
@@ -184,7 +178,7 @@ Double precision Res
       If(getIsReReadParameters()) Then
         !ReRead in the Values of the Parameters from the Input File
         !Sample Code: PAR1 = getParameterValue(1)
-          LAI = getParameterValue(1) !Leaf Area Index [-]
+          LAI = getParameterValue(1)!Leaf Area Index [m^2_leaves/m^2_cultivated area]
           Afv = getParameterValue(2) !Cultivated fraction area of floor [-]
           rho_a = getParameterValue(3) !Air density [kg/m^2]
           c_p = getParameterValue(4) !Air specific heat capacity [kJ/kgK]
@@ -192,8 +186,9 @@ Double precision Res
           gamma = getParameterValue(6) !Psychometric constant [Pa/K]
           rho_v = getParameterValue(7) !Lettuce relfectivity [-]
           LED_eff = getParameterValue(8) !LED efficiency [-]
-          CAC = getParameterValue(9) !Coverage of the floor of the cultivated area [-]
+          CAC = getParameterValue(9)!Coverage of the floor of the cultivated area [-] 
       EndIf
+
 !-----------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------
@@ -204,19 +199,20 @@ Double precision Res
       P_LED = getInputValue(3) !Total LED Power [W]
       A_gr = getInputValue(4) !BIAs area [W]
 
+
 !-----------------------------------------------------------------------------------------------------------------------
 
 !-----------------------------------------------------------------------------------------------------------------------
 !Check the Inputs for Problems (#,ErrorType,Text)
 	  !Sample Code: If( IN1 <= 0.) Call FoundBadInput(1,'Fatal','The first input provided to this model is not acceptable.')
 
-      IF (T_a < -273.15d0) CALL foundBadInput(4, 'Fatal', & 
+      IF (T_a < -273.15d0) CALL foundBadInput(1, 'Fatal', & 
       'The input temperature is less than 0 K')
-      IF (P_LED < 0.) CALL foundBadInput(6, 'Fatal', & 
+      IF (P_LED < 0.) CALL foundBadInput(2, 'Fatal', & 
       'The total power input have to be greater than 0')
-      IF ((RH > 100.) .or. (RH < 0.)) CALL foundBadInput(7, 'Fatal', & 
+      IF ((RH > 100.) .or. (RH < 0.)) CALL foundBadInput(3, 'Fatal', & 
       'The relative humidity must be between 0 and 100')
-      IF (A_gr < 0.) CALL foundBadInput(6, 'Fatal', & 
+      IF (A_gr < 0.) CALL foundBadInput(4, 'Fatal', & 
       'The agriculture space area have to be greater than 0')
       If(ErrorFound()) Return
 !-----------------------------------------------------------------------------------------------------------------------
@@ -271,7 +267,6 @@ end do
       CALL setOutputValue(2, q_lat)!Latent gain to air from vegetation [kg/hr]
       CALL setOutputValue(3, T_s)!Vegetation temperature [degC]
       CALL setOutputValue(4, q_loss)!Light energy that got reflected [W]
-      !CALL setOutputValue(5, LAI)!Lead area index [-]
 
 !-----------------------------------------------------------------------------------------------------------------------
 !If Needed, Store the Desired Disceret Control Signal Values for this Iteration (#,State)

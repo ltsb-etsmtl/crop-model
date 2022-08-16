@@ -15,7 +15,7 @@ Implicit None !force explicit declaration of local variables
 !Inputs
 Double precision T_a !Air temperature [degC]
 Double precision RH !Relative humidity [-]
-Double precision P_LED !Total LED Power [W]
+Double precision P_LED !Total LED Power [W/m2]
 Double precision A_gr !Floor area [m^2]
 
 

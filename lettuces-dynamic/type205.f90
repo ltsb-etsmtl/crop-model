@@ -22,7 +22,7 @@ Implicit None !force explicit declaration of local variables
 !Inputs
 Double precision T_a !Air temperature [degC]
 Double precision RH !Relative humidity [-]
-Double precision P_LED !Total LED Power [W]
+Double precision P_LED !LED power density [W/m2]
 Double precision A_gr !Floor area [m^2]
 Double precision LAI !LeafAreaIndex [m^2_leaves/m^2_cultivated area]
 Double precision CAC !Coverage of the floor of the cultivated area [-]

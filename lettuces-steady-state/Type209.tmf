@@ -1,0 +1,437 @@
+#ESI!
+4.0
+Type209
+0
+
+MH Talbot, A Wills
+ÉTS
+1
+
+2
+2
+August, 2022
+
+August, 2022
+1
+
+noowner
+__
+__
+__
+1
+
+0
+0
+0
+0
+0
+0
+__
+__
+__
+1
+
+0
+__
+__
+__
+__
+0
+0
+__
+C:\Users\am97370\Desktop\trnsys model pole alim\avec laitues\Type204.f90
+__
+__
+__
+16
+Internal Air Temp.
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+C
+Temperature
+Internal Relative Humidity
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+% (base 100)
+Percentage
+q_sens
+SN
+1
+Sensible heat gain to air from vegetation
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+kJ/hr
+Power
+q_lat
+SN
+1
+Latent water gain to air from vegetation
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+kg/hr
+Flow Rate
+q_sens_w
+SN
+1
+W/m^2
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+W
+Power
+q_lat_w
+SN
+1
+W/m^2
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+W
+Power
+Vegetation temp
+SN
+1
+Temperature of the vegetation
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+C
+Temperature
+LAI
+SN
+1
+Leaf Area Index (LAI), a dimensionless variable defined as the total one-sided area of photosynthetic tissue per unit of ground surface area that represents an effective area for latent and sensible heat exchange.
+simple
+real
+3
++
+-Inf
++Inf
+[ ; ]
+3
+0
+-
+Dimensionless
+Cultivated fraction area of floor
+SN
+1
+Ratio of total horizontal growing surface area in the space to total planview floor area.
+simple
+real
+3
++
+0
+10
+[ ; ]
+0.9
+0
+-
+Dimensionless
+rho_v
+SN
+1
+Reflectivity of the leaves
+simple
+real
+3
++
+0
+1
+[ ; ]
+0.05
+0
+-
+Dimensionless
+CAC
+SN
+1
+Cultivation Area Cover (CAC), which represents the ratio of cultivated area covered by the horizontal projection of the leaves, to the total cultivated area.
+simple
+real
+3
++
+0
+1
+[ ; ]
+0.95
+0
+-
+Dimensionless
+PAR flux
+SN
+1
+Photosynthetically active radiation flux incident on the vegetation.
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+W/m^2
+Flux
+PPFD
+SN
+1
+Photosynthetic photon flux density [µmol/m2s] provided on the foliage from the lamps. Good estimate is 5 times the PAR.
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+any
+any
+r_a
+SN
+1
+Aerodynamic boundary layer resistance. 100 s/m may be assumed for systems with forced air circulation, 200 s/m for systems with no forced air circulation.
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+100
+0
+s/m
+Inverse Velocity
+Net radiation absorbed
+SN
+1
+The net radiation (PAR) absorbed by the crop (R_net).
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+kJ/hr
+Power
+Total floor area of space
+SN
+1
+The total planview floor area of the space containing the cultivated area.
+simple
+real
+3
++
+0
++Inf
+[ ; ]
+1
+0
+m^2
+Area
+0
+0
+0
+0
+0
+
+*** trnModel specific properties ***
+9999
+209
+
+9
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+9
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+11
+Specific Heat Capacity of Vegetation
+Vegetation Extinction coefficient
+Vegetation Far-IR Reflectance Coefficient
+Vegetation Far-IR emissivity
+Solar Reflectance of Vegetation
+Characteristic Leaf Length
+Specific Leaf Area Index (m2 leaf / kg carb)
+Cultivated Fraction of Floor
+Vegetation Mass Surface Density (kg/m2)
+Fraction of solar radiation hitting obstacles
+Total Artificial Light Power Supplied
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+0
+0
+4
+0
+
+
+1
+100
+0
+5
+0
+
+
+1
+100
+0
+4
+0
+
+
+1
+100
+-1
+-1
+0
+
+
+1
+100

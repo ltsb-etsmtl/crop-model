@@ -14,3 +14,4 @@ MAIN CHARACERISTICS OF THE CROP MODELS
 
       1- lettuces-steady-state : lettuces, steady-state LAI, steady-state CAC, LED lamps only, perfectly irrigated
       2- lettuces-dynamic : lettuces, dynamic LAI, dynamic CAC, LED lamps only, perfectly irrigated
+      3- lettuces-with-growth-model: lettuces, integrated growth model, solar and LED lamps, perfectly irrigated

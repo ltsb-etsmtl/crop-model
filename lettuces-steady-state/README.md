@@ -19,5 +19,4 @@ CITATION
 -----------------------------------
 Please cite when using the model :
 
-<i> Talbot, M.-H., & Monfet, D. (2020). Estimating the impact of crops on peak loads of a Building-Integrated Agriculture space. Science and Technology for the Built Environment. </i> 
-
+Talbot, M.-H., & Monfet, D. (2020). Estimating the impact of crops on peak loads of a Building-Integrated Agriculture space. Science and Technology for the Built Environment, 26(10), 1448-1460. doi:10.1080/23744731.2020.1806594

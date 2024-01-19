@@ -10,7 +10,7 @@ It is a dynamic model that can predict both the heat gain/loss from crops and cr
 This version of crop model can only be used in a space where LED lamps are used to grow crops.
 
 Regressions based on the calibrated values for (9) sets of conditions are available in TRNSYS through the .tpf file in the description of the variables.
-The (9) sets of conditions are the combinations of (3) temperatures - 20, 24 and 28°C and (3) lighting intensities - 200, 400, 750 μmol* m <sup>-2</sup>* s^-1.
+The (9) sets of conditions are the combinations of (3) temperatures - 20, 24 and 28°C and (3) lighting intensities - 200, 400, 750 μmol⋅m<sup>-2</sup>⋅s<sup>-1</sup>.
 
 CITATION
 -----------------------------------

@@ -4,8 +4,11 @@ This project includes crop models in folders that were used in various studied t
 
 DESCRIPTION OF THE CROP (LETTUCE) DYNAMIC MODEL WITH AN INTEGRATED GROWTH MODEL
 -----------------------------------
-It is a dynamic model that can predict both the heat gain/loss from crops and crop yield. 
-It models lettuces growing inside a controlled environnement in a hydroponic production system according to a validated algorithm for the energy balance (Graamans et al., 2017) and a calibrated algorithm for the growth sub-model based on Van Henten (1994) model. Some modifications were added to the energy balance to improve the model's versatility.Regressions based on the calibrated values for (9) sets of conditions are available in TRNSYS through the .tpf file in the description of the variables. The (9) sets of conditions are the combinations of (3) temperatures - 20, 24 and 28°C and (3) lighting intensities - 200, 400, 750 μmol⋅m<sup>-2</sup>⋅s<sup>-1</sup>.
+- It is a dynamic model that can predict both the heat gain/loss from crops and crop yield. 
+- It models lettuces growing inside a controlled environnement in a hydroponic production system according to a validated algorithm for the energy balance (Graamans et al., 2017) and a calibrated algorithm for the growth sub-model based on Van Henten (1994) model.
+- Some modifications were added to the energy balance to improve its versatility.
+- Regressions based on the calibrated parameters for (9) sets of conditions are available in TRNSYS through the .tpf file in the description of the variables.
+- The (9) sets of conditions are the combinations of (3) temperatures - 20, 24 and 28°C and (3) lighting intensities - 200, 400, 750 μmol⋅m<sup>-2</sup>⋅s<sup>-1</sup>.
 
 CITATION
 -----------------------------------

@@ -4,7 +4,7 @@ Type213
 0
 
 Marie-Helene Talbot, Timothe Lalonde, Adam Wills
-ÉTS
+Ã‰TS
 1
 
 2
@@ -19,8 +19,10 @@ __
 __
 __
 3
-Graamans et al's (2017) model for lettuce energy balance.
-Growth algorithm based on Van Henten (2014) and modified by Talbot & Monfet (2023).
+Graamans et al's (2017) model for lettuce energy balance.
+
+Growth algorithm based on Van Henten (2014) and modified by Talbot & Monfet (2023).
+
 Parameters were calbratied in Talbot & Monfet (2023) detailed in the proforma.
 0
 0
@@ -184,7 +186,8 @@ any
 PPFD_EL
 SN
 2
-Photosynthetic Photon Flux Density (umol/(m^2*s)) of the electric lighting.
+Photosynthetic Photon Flux Density (umol/(m^2*s)) of the electric lighting.
+
 Typically varies between 200 and 750umol/(m^2*s) for indoor farms (without any sunlight).
 simple
 real
@@ -260,8 +263,10 @@ Power
 PAR_EL
 SN
 3
-Photosynthetically active radiation (PAR) emitted by the electric lightingt (W/m^2).
-
+Photosynthetically active radiation (PAR) emitted by the electric lightingt (W/m^2).
+
+
+
 = Installed power input (W/m^2) / lamp efficiency (short-wave fraction).
 simple
 real
@@ -337,13 +342,20 @@ Power
 c_beta
 SN
 8
-Yield factor indicating the respiratory and synthesis losses of non-structural material due to growth. 
-It was calibrated to the values in the table below (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). 
-Extract linearly for other PPFD.
-
-PPFD     /   200    /    400   /    750   /
-20degC  /  0.401  /  0.402  /  0.403  /
-24degC  /  0.401  /  0.402  /  0.403  /
+Yield factor indicating the respiratory and synthesis losses of non-structural material due to growth. 
+
+It was calibrated to the values in the table below (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). 
+
+Extract linearly for other PPFD.
+
+
+
+PPFD     /   200    /    400   /    750   /
+
+20degC  /  0.401  /  0.402  /  0.403  /
+
+24degC  /  0.401  /  0.402  /  0.403  /
+
 28degC  /  0.401  /  0.402  /  0.403  /    
 simple
 real
@@ -359,14 +371,22 @@ Dimensionless
 c_espilon
 SN
 9
-Light use efficiency at very high CO2 concentrations (g/J).
-It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). Here below are the parameters of the polynomial regression depending on the temperature.
-
-c_epislon = a * PPFD^2 + b * PPFD + c
-
-               /            a              /             b          /            c           /
-20degC  /  -1.5319*10^-11  /  9.4800*10^-9  /  9.2492*10^-6  /
-24degC  /  -2.5590*10^-11  /  1.8529*10^-9  /  8.3203*10^-6  /
+Light use efficiency at very high CO2 concentrations (g/J).
+
+It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). Here below are the parameters of the polynomial regression depending on the temperature.
+
+
+
+c_epislon = a * PPFD^2 + b * PPFD + c
+
+
+
+               /            a              /             b          /            c           /
+
+20degC  /  -1.5319*10^-11  /  9.4800*10^-9  /  9.2492*10^-6  /
+
+24degC  /  -2.5590*10^-11  /  1.8529*10^-8  /  8.3203*10^-6  /
+
 28degC  /  -3.3958*10^-12  /  -3.7225*10^-9 /  1.1632*10^-5  /    
 simple
 real
@@ -382,14 +402,22 @@ any
 c_grmax
 SN
 9
-Saturation growth rate (1/s).
-It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). Here below are the parameters of the polynomial regression depending on the temperature.
-
-c_grmax = a * PPFD^2 + b * PPFD + c
-
-               /            a              /             b          /            c           /
-20degC  /  -2.1364*10^-12  /  2.7308*10^-9  /  2.9689*10^-7  /
-24degC  /  -1.7021*10^-12  /  2.0302*10^-9  /  3.3353*10^-7  /
+Saturation growth rate (1/s).
+
+It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023). Here below are the parameters of the polynomial regression depending on the temperature.
+
+
+
+c_grmax = a * PPFD^2 + b * PPFD + c
+
+
+
+               /            a              /             b          /            c           /
+
+20degC  /  -2.1364*10^-12  /  2.7308*10^-9  /  2.9689*10^-7  /
+
+24degC  /  -1.7021*10^-12  /  2.0302*10^-9  /  3.3353*10^-7  /
+
 28degC  /  -2.3461*10^-12  /  2.8652*10^-9 /  -3.0279*10^-7  /    
 simple
 real
@@ -405,15 +433,24 @@ any
 SLA
 SN
 10
-Specific Leaf Area (SLA) (m^2/g_DW). 
-It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023) which is specific to Othilie lettuces. Here below are the parameters of the polynomial regression depending on the temperature.
-
-SLA = a * PPFD^2 + b * PPFD + c
-
-               /            a           /             b          /            c           /
-20degC  /  3.7662*10^-8  /  -5.5597*10^-5  /  4.2313*10^-2  /
-24degC  /  3.0779*10^-8  /  -6.1968*10^-5  /  5.6362*10^-2  /
-28degC  /  4.4935*10^-8  /  -6.9961*10^-5 /   5.2195*10^-2  /
+Specific Leaf Area (SLA) (m^2/g_DW). 
+
+It was calibrated (Talbot & Monfet, 2023) based on an experimental dataset from Carotti et al. (2023) which is specific to Othilie lettuces. Here below are the parameters of the polynomial regression depending on the temperature.
+
+
+
+SLA = a * PPFD^2 + b * PPFD + c
+
+
+
+               /            a           /             b          /            c           /
+
+20degC  /  3.7662*10^-8  /  -5.5597*10^-5  /  4.2313*10^-2  /
+
+24degC  /  3.0779*10^-8  /  -6.1968*10^-5  /  5.6362*10^-2  /
+
+28degC  /  4.4935*10^-8  /  -6.9961*10^-5 /   5.2195*10^-2  /
+
 
 simple
 real
@@ -429,9 +466,12 @@ any
 DW_content
 SN
 4
-Dry weight content varies according to PPFD (Carotti et al., 2021) for Othilie lettuces. 
-
-DW = -8.83*10^-8 x PPFD^2 + 1.1299*10^-4 * PPFD + 6.9351*10^-3
+Dry weight content varies according to PPFD (Carotti et al., 2021) for Othilie lettuces. 
+
+
+
+DW = -8.83*10^-8 x PPFD^2 + 1.1299*10^-4 * PPFD + 6.9351*10^-3
+
 
 simple
 real
@@ -462,14 +502,22 @@ Mass
 Initial value Xsdw
 SN
 9
-[g_DW/m^2]
-Initial value of the structural dry weight (Xsdw)
-Default value was set to fit Van Henten (1994)
-This study tells that : Xsdw/(Xsdw+Xnsdw)=0.75
-
-Default values for 25 crops/m^2 and a transplant of 1.2g_DW/plant (with a DW content of 5% for transplant):
-Y_DW = 1.2g_FW/plant * 0.05 * 25 plants/m^2
-Xsdw = 0.75 * Y_DW = 1.125 g_DW/m^2
+[g_DW/m^2]
+
+Initial value of the structural dry weight (Xsdw)
+
+Default value was set to fit Van Henten (1994)
+
+This study tells that : Xsdw/(Xsdw+Xnsdw)=0.75
+
+
+
+Default values for 25 crops/m^2 and a transplant of 1.2g_DW/plant (with a DW content of 5% for transplant):
+
+Y_DW = 1.2g_FW/plant * 0.05 * 25 plants/m^2
+
+Xsdw = 0.75 * Y_DW = 1.125 g_DW/m^2
+
 Xnsdw = 0.25 * Y_DW  = 0.375 g_DW/m^2
 simple
 real
@@ -485,14 +533,22 @@ any
 Initial value Xnsdw
 SN
 9
-[g_DW/m^2]
-Initial value of the non-structural dry weight (Xnsdw)
-Default value was set to fit Van Henten (1994)
-This study tells that : Xsdw/(Xsdw+Xnsdw)=0.75
-
-Default values for 25 crops/m^2 and a transplant of 1.2g_DW/plant (with a DW content of 5% for transplant):
-Y_DW = 1.2g_FW/plant * 0.05 * 25 plants/m^2
-Xsdw = 0.75 * Y_DW = 1.125 g_DW/m^2
+[g_DW/m^2]
+
+Initial value of the non-structural dry weight (Xnsdw)
+
+Default value was set to fit Van Henten (1994)
+
+This study tells that : Xsdw/(Xsdw+Xnsdw)=0.75
+
+
+
+Default values for 25 crops/m^2 and a transplant of 1.2g_DW/plant (with a DW content of 5% for transplant):
+
+Y_DW = 1.2g_FW/plant * 0.05 * 25 plants/m^2
+
+Xsdw = 0.75 * Y_DW = 1.125 g_DW/m^2
+
 Xnsdw = 0.25 * Y_DW  = 0.375 g_DW/m^2
 simple
 real
@@ -553,7 +609,8 @@ Mass
 Electric lighting status
 SN
 2
-1: ON
+1: ON
+
 0: OFF
 simple
 real

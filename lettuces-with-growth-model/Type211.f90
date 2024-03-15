@@ -312,7 +312,7 @@ Double Precision, Parameter :: fDelta = 0.00001d0
 !Get the Input Values
       T_a = getInputValue(1) !Air temperature [degC]
       RH = getInputValue(2) !Relative humidity [-]
-      CO2 = getInputValue(3) !CO2 concentration [ppm]
+      CO2_a = getInputValue(3) !CO2 concentration [ppm]
       Q_sol = getInputValue(4) !Available solar radiation [W/m^2]
 	  status_EL = getInputValue(5) !Electric lighting status [-]
       r_a = getInputValue(6) !Aerodynamic stomatal resistance [s/m]
@@ -370,7 +370,7 @@ Double Precision, Parameter :: fDelta = 0.00001d0
 	!Lettuce growth model (Van Henten, 1994)
 	!-----------------------------------------------------------------------------------------------------------------------      
       
-	  CO2 = 1200.0d0*0.00183d0  ![ppm] convert to [g/m^3]
+	  CO2 = CO2_a*0.00183d0  ![ppm] convert to [g/m^3]
       g_car= c_car1*T_a**2.0d0+c_car2*T_a+c_car3 !m/s
 	  g_stm = (200d0+PPFD)/(60.0d0*(1500.0d0+PPFD))
       g_CO2 = (g_bnd**(-1.0d0)+g_stm**(-1.0d0)+g_car**(-1.0d0))**(-1.0d0) !m/s

@@ -1,0 +1,6 @@
+
+pyinstaller pyqt.py  --onefile --noconsole --icon=image.ico
+
+Compress-Archive -Path C:\Users\Gilbert\PycharmProjects\Doc_Art2\dist -DestinationPath C:\Users\Gilbert\Desktop\CEA.zip
+
+

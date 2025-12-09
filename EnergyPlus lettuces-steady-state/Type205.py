@@ -1,5 +1,5 @@
 import math
-import scipy.optimize as opt
+
 def Type205(self, state, T_a, RH,lights, **kwargs):
     P_LED = kwargs["P_el"] * lights / kwargs["area"] # Total LED Power [W/m^2]
     A_gr = kwargs["area"]  # Floor area [m^2]
@@ -132,11 +132,11 @@ def Type205(self, state, T_a, RH,lights, **kwargs):
 
             i+=1
 
-        if i >= 100:
-            T_s = opt.brenth(h, 0, 50)
-            Xs = Xa_star + rho_a * 1000 * c_p / lmbda * epsilon * (T_s - T_a)
-            q_lat_watt = LAI * lmbda * (Xs - Xa) / (r_s + r_a)  # W/m^2
-            q_sens_watt = (LAI * rho_a * c_p * 1000) / r_a * (T_s - T_a)
+        # if i >= 100:
+        #     T_s = opt.brenth(h, 0, 50)
+        #     Xs = Xa_star + rho_a * 1000 * c_p / lmbda * epsilon * (T_s - T_a)
+        #     q_lat_watt = LAI * lmbda * (Xs - Xa) / (r_s + r_a)  # W/m^2
+        #     q_sens_watt = (LAI * rho_a * c_p * 1000) / r_a * (T_s - T_a)
 
     except Exception:
         self.api.runtime.issue_severe(state, "CEA Solver Failed")
